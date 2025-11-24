@@ -37,7 +37,7 @@ services:
     volumes:
       - .:/usr/src
     environment:
-      - SONAR_LOGIN=sqp_eaa12e8f143c5edf9f5005d429302041f8198d0c
+      - SONAR_TOKEN=sqp_eaa12e8f143c5edf9f5005d429302041f8198d0c
       - SONAR_HOST_URL=http://213.199.42.57:9002
     networks:
       - grade_net
