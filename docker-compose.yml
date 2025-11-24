@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: grade_calculator
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - grade_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d grade_calculator"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://user:password@db:5432/grade_calculator
+    networks:
+      - grade_net
+
+  sonar-scanner:
+    image: sonarsource/sonar-scanner-cli
+    volumes:
+      - .:/usr/src
+    environment:
+      - SONAR_LOGIN=sqp_eaa12e8f143c5edf9f5005d429302041f8198d0c
+      - SONAR_HOST_URL=http://213.199.42.57:9002
+    networks:
+      - grade_net
+
+volumes:
+  postgres_data:
+
+networks:
+  grade_net:
