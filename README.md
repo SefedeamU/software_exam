@@ -2,6 +2,16 @@
 
 Sistema de cálculo de notas finales para docentes de UTEC, implementado con FastAPI, PostgreSQL y Docker, siguiendo principios de diseño orientado a objetos y clean code.
 
+
+## Resultados de calidad y análisis SonarQube
+
+### Calidad requerida
+![Calidad requerida](quality.png)
+
+### Resultado del alumno en SonarQube
+![Resultado SonarQube](sonnar.png)
+
+
 ## Características
 
 - **Registro de Evaluaciones**: Permite registrar notas y pesos (RF01).
