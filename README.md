@@ -5,12 +5,11 @@ Sistema de cálculo de notas finales para docentes de UTEC, implementado con Fas
 
 ## Resultados de calidad y análisis SonarQube
 
-### Calidad requerida
-![Calidad requerida](quality.png)
+### Requerido
+![Calidad requerida](sonnar.png)
 
 ### Resultado del alumno en SonarQube
-![Resultado SonarQube](sonnar.png)
-
+![Resultado SonarQube](quality.png)
 
 ## Características
 
